@@ -1,4 +1,6 @@
 <?php
+
+
 /**
  * Plugin Name: My New Plugin
  * Plugin URI: https://newplugin.com
@@ -9,6 +11,7 @@
  * License: GPLv2
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html
  * Text Domain: my-new-plugin
+ * 
  * 
  * 
 */
