@@ -13,43 +13,89 @@
  * 
 */
 
-// SingleTon patten 
 
-class First_my_plugin{
+// SingleTon patten
+
+class Onup_Personal_plugin{
+
 
     private static $instance;
+
     private function __construct(){
          add_filter ('the_content', array( $this, 'the_content_callback' ));
+         add_filter ('the_title', array( $this, 'the_title_callback' ));
+
     }
 
     public static function get_instance(){
-        if(self::$instance){
+        if( self::$instance ){
             return self::$instance;
         }
-
         self::$instance = new self();
-
         return self::$instance;
     }
 
     public  function the_content_callback( $content ){
+        $url = get_the_permalink();
+        $image = '<p> <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=' . $url . '"></p>';
+        $content .=$image;
+        // return 'My new content 2';
+        // return $content . '<p>My new content</p>';
+        return $content;
 
-            $url = get_the_permalink();
+     }
 
-            $image = '<p> <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=' . $url . '"></p>';
-            $content .=$image;
-            // return 'My new content 2';
-            // return $content . '<p>My new content</p>';
+     public  function the_title_callback( $title ){
+        $url = get_the_permalink();
+        $image = '<p> <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=' . $url . '"></p>';
+        $title .=$image;
+        // return 'My new content 2';
+        // return $content . '<p>My new content</p>';
+        return $title;
 
-            return $content;
-
-        }
-
-
+     }
 
 }
-First_my_plugin::get_instance();
 
+Onup_Personal_plugin::get_instance();
+
+
+
+// SingleTon patten 
+// class First_my_plugin{
+
+//     private static $instance;
+
+//     private function __construct(){
+//          add_filter ('the_content', array( $this, 'the_content_callback' ));
+//     }
+
+//     public static function get_instance(){
+//         if(self::$instance){
+//             return self::$instance;
+//         }
+
+//         self::$instance = new self();
+
+//         return self::$instance;
+//     }
+
+//     public  function the_content_callback( $content ){
+
+//         $url = get_the_permalink();
+
+//         $image = '<p> <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=' . $url . '"></p>';
+//         $content .=$image;
+//         // return 'My new content 2';
+//         // return $content . '<p>My new content</p>';
+
+//         return $content;
+
+//      }
+
+// }
+
+// First_my_plugin::get_instance();
 
 
 
