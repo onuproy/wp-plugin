@@ -119,6 +119,7 @@ class Onup_Personal_plugin{
 
     //Load Another File Function 
      private function load_classes() {
+        
         require_once AB_THREE_PLUGIN_PATH . 'includes/Admin_Menu.php';
 
         new AB_Three_Admin_Menu();
