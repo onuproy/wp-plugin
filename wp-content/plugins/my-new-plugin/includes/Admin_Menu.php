@@ -19,8 +19,14 @@ class AB_Three_Admin_Menu {
     } 
 
     public function query_post_callback() {
-       
-        include AB_THREE_PLUGIN_PATH . 'includes\templates\query-post.php';
+
+        $posts = get_posts( array(
+            'post_type' => 'post',
+            'post_par_page' => 10,
+        ) );
+
+
+        include AB_THREE_PLUGIN_PATH . 'includes/templates/query-post.php';
 
     }
 
