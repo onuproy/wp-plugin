@@ -17,9 +17,27 @@
             <?php foreach ( $posts as $post ): ?>
             <tr>
                 <td><?php echo $post->post_title; ?></td>
-                <td><?php echo $post->post_author; ?></td>
-                <td><?php echo $post->ID; ?></td>
-                <td><?php echo human_time_diff( strtotime( $post->post_date ) ); ?> ago</td>
+                <td>
+                    <?php
+                        $user = get_user_by( 'id', $post->post_author );
+                        echo $user->display_name;
+                     ?>
+                </td>
+                <td>
+                    <?php 
+                        $terms = wp_get_post_terms( $post->ID, 'category' );
+
+                        $term_nemas = array_map( function(  $term ) {
+
+                            return $term->name;
+
+                        }, $terms);
+
+                        echo implode( ',  ', $term_nemas );
+                    ?>
+                </td>
+                <!-- <td><?php echo human_time_diff( strtotime( $post->post_date ) ); ?></td> -->
+                <td><?php echo wp_date( 'd F, Y', strtotime( $post->post_date ) ); ?></td>
             </tr>
             <?php endforeach;?>
         </tbody>

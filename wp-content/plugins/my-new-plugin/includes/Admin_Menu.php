@@ -22,7 +22,7 @@ class AB_Three_Admin_Menu {
 
         $posts = get_posts( array(
             'post_type' => 'post',
-            'post_par_page' => 10,
+            'posts_per_page' => 10,
         ) );
 
 
